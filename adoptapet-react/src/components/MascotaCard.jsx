@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import './MascotaCard.css'; // Asegúrate de importar el archivo de estilos
+import './app.css'; // Asegúrate de importar el archivo de estilos
 
 export const MascotaCard = ({ mascota }) => {
   // Función para determinar la clase según la especie

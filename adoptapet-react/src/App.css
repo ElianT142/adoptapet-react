@@ -182,3 +182,33 @@
     border-right-color: var(--border);
   }
 }
+
+.mascota-perro {
+  background-color: #f0f8ff; /* Azul claro */
+  border: 2px solid #0074d9;
+}
+
+.mascota-gato {
+  background-color: #ffe4e1; /* Rosa claro */
+  border: 2px solid #ff69b4;
+}
+
+.mascota-otro {
+  background-color: #f5f5dc; /* Beige */
+  border: 2px solid #8b4513;
+}
+
+.mascotas-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.mascota-card {
+  padding: 16px;
+  border-radius: 8px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
