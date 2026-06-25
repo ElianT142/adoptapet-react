@@ -1,55 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
-import { mascotas } from './data/mascotas'; // Importa el array
+import React, { useState } from 'react';
+import { mascotas } from './data/mascotas';
+import { MascotaCard } from './components/MascotaCard';
+import { FiltroEspecie } from './components/FiltroEspecie';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [filtro, setFiltro] = useState('todas');
 
-  // Verifica que el array se carga correctamente
-  console.log('Mascotas:', mascotas);
+  // Filtrar las mascotas según el filtro seleccionado
+  const mascotasFiltradas = mascotas.filter((mascota) => {
+    if (filtro === 'todas') return true;
+    return mascota.especie.toLowerCase() === filtro;
+  });
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <h2>Lista de Mascotas</h2>
-        <ul>
-          {mascotas.map((mascota) => (
-            <li key={mascota.id}>
-              {mascota.nombre} - {mascota.especie}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+    <div className="app">
+      <h1>Lista de Mascotas</h1>
+      <FiltroEspecie filtroActual={filtro} setFiltro={setFiltro} />
+      <div className="mascotas-container">
+        {mascotasFiltradas.map((mascota) => (
+          <MascotaCard key={mascota.id} mascota={mascota} />
+        ))}
+      </div>
+    </div>
   );
 }
 
